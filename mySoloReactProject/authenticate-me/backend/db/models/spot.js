@@ -2,14 +2,14 @@
 module.exports = (sequelize, DataTypes) => {
   const Spot = sequelize.define('Spot', {
     userId: DataTypes.INTEGER,
-    address: DataTypes.STRING,
-    city: DataTypes.STRING,
-    state: DataTypes.STRING,
-    country: DataTypes.STRING,
-    lat: DataTypes.NUMERIC,
-    lng: DataTypes.NUMERIC,
+    addressLine1: DataTypes.STRING(50),
+    addressLine2: DataTypes.STRING(30),
+    addressLine3: DataTypes.STRING(30),
+    addressLine4: DataTypes.STRING(30),
+    lat: DataTypes.DOUBLE(5,20),
+    lng: DataTypes.DOUBLE(5,20),
     spotName: DataTypes.STRING,
-    price: DataTypes.NUMERIC
+    price: DataTypes.DECIMAL(5,2)
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here

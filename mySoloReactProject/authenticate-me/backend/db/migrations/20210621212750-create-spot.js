@@ -13,28 +13,28 @@ module.exports = {
         allowNull: false,
         references: { model: 'Users' }
       },
-      address: {
+      addressLine1: {
         type: Sequelize.STRING(50),
         allowNull: false
       },
-      city: {
+      addressLine2: {
         type: Sequelize.STRING(30),
         allowNull: false
       },
-      state: {
+      addressLine3: {
         type: Sequelize.STRING(30),
         allowNull: false
       },
-      country: {
+      addressLine4: {
         type: Sequelize.STRING(30),
         allowNull: false
       },
       lat: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.DOUBLE(5,20),
         allowNull: false
       },
       lng: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.DOUBLE(5,20),
         allowNull: false
       },
       spotName: {
@@ -42,7 +42,7 @@ module.exports = {
         allowNull: false
       },
       price: {
-        type: Sequelize.DECIMAL(5,3),
+        type: Sequelize.DECIMAL(5,2),
         allowNull: false
       },
       createdAt: {
