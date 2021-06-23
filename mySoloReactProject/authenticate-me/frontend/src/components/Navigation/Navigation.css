@@ -1,0 +1,51 @@
+.homeDivContainer {
+  position: relative;
+  height: 700px;
+  overflow: hidden;
+}
+
+.outerGridDiv {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  justify-content: stretch;
+  align-content: stretch;
+  grid-template-areas:
+    "header1 header2 header3"
+    "row2left row2middle row2right"
+    "row3left row3middle row3right"
+    "row4left row4middle row4right"
+    "footer1 footer2 footer3";
+}
+
+
+
+.homeBackground__romeImage {
+  width: 100%;
+}
+
+
+
+#ulNavLinkWrapperDiv {
+  grid-area: header3;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* align-self: center; */
+}
+
+#ulNavLinkWrapperDiv {
+  /* display: flex; */
+}
+
+
+.test {
+  width: 100px;
+  height: 3000px;
+  background-color: red;
+}
