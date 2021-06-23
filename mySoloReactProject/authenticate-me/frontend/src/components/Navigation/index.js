@@ -1,13 +1,30 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-// import romeImage from '../../../public/images/rome-6207755_1920.jpg';
-// const romeImage = require('/home/eben/appacademyfolder/week15/day4/WEEK-15-DAY-4-MY-SOLO-REACT-PROJECT/mySoloReactProject/authenticate-me/frontend/public/images/rome-6207755_1920.jpg');
+
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const [showMenu, setShowMenu] = useState(false);//////////////
+
+  const openMenu = () => { ////////////////////
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+  useEffect(() => { /////////////////////
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   let sessionLinks;
   if (sessionUser) {
@@ -17,8 +34,18 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        {/* <div id="eben">
+        <button id="homePageButton" onClick={openMenu}>
+        <i class="fas fa-globe"></i>
+        </button>
+        </div> */}
+        {showMenu && (
+        <ul className="profile-dropdown">
+          <Link className="link" exact to="/" style={{ textDecoration: 'none' }}>Home</Link>
+          <Link className="link" to="/login" style={{ textDecoration: 'none' }}>Login</Link>
+          <Link className="link" to="/signup" style={{ textDecoration: 'none' }}>Sign Up</Link>
+        </ul>
+        )}
       </>
     );
   }
@@ -30,10 +57,16 @@ function Navigation({ isLoaded }){
     <div className="homeDivContainer">
       <img className="homeBackground__romeImage" src="../../images/rome-6207755_1920.jpg"></img>
       <div className="outerGridDiv">
+      <div id="eben">
+        <button id="homePageButton" onClick={openMenu}>
+        <i class="fas fa-globe fa-2x"></i>
+        </button>
+        </div>
       <div id="ulNavLinkWrapperDiv">
+
         <ul id="loggedOutNavLinks">
           <li>
-            <NavLink exact to="/">Home</NavLink>
+            {/* <NavLink exact to="/">Home </NavLink> */}
             {isLoaded && sessionLinks}
           </li>
         </ul>
