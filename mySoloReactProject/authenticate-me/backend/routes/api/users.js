@@ -2,7 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Spot } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -48,5 +48,19 @@ router.post(
     });
   }),
 );
+
+
+
+////////////////// EBEN TEST ROUTE
+router.get('/eben', asyncHandler( async (req, res) => {
+  const spots = await Spot.findAll();
+  res.json(spots);
+}));
+
+
+
+
+
+
 
 module.exports = router;

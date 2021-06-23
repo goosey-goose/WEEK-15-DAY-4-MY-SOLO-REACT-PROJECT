@@ -3,11 +3,21 @@ import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+// const { Spot } = require('../../../../backend/db/models');
 
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [showMenu, setShowMenu] = useState(false);//////////////
+
+  //for carousel
+  const sliders = document.querySelector(".carouselBox");
+  let scrollPerClick;
+  let imagePadding = 20;
+
+
+
+
 
   const openMenu = () => { ////////////////////
     if (showMenu) return;
@@ -61,7 +71,14 @@ function Navigation({ isLoaded }){
         <button id="homePageButton" onClick={openMenu}>
         <i class="fas fa-globe fa-2x"></i>
         </button>
+      </div>
+      <div className="carousel">
+        <div className="carouselBox">
+
         </div>
+        <a className="switchLeft sliderButton">{'<'}</a>
+        <a className="switchRight sliderButton">{'>'}</a>
+      </div>
       <div id="ulNavLinkWrapperDiv">
 
         <ul id="loggedOutNavLinks">
