@@ -196,6 +196,21 @@
   justify-content: flex-end;
 }
 
+#medieval-name-logo {
+  grid-area: header1;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 25px;
+  margin-top: 25px;
+  margin-left: 110px;
+  color: #FFF;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.fa-chess-rook {
+  margin-right: 10px;
+}
+
 /* #logged-in-username-div {
   grid-area: header3;
   display: flex;
