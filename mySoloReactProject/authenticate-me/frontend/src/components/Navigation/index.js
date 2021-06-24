@@ -70,6 +70,7 @@ function Navigation({ isLoaded }){
 
 
   const openMenu = () => { ////////////////////
+    console.log(showMenu);
     if (showMenu) return;
     setShowMenu(true);
   };
@@ -158,6 +159,10 @@ function Navigation({ isLoaded }){
       </div>
       {isLoginFormPage && loginComponent}
       {isSignupFormPage && signupComponent}
+      <div className="logout-button-div">
+      {isLoaded && sessionLinks}
+      </div>
+      {/* {isLoaded && sessionLinks} */}
       <div className="carousel">
         <div className="carouselBox">
 
@@ -170,7 +175,7 @@ function Navigation({ isLoaded }){
         <ul id="loggedOutNavLinks">
           <li>
             {/* <NavLink exact to="/">Home </NavLink> */}
-            {isLoaded && sessionLinks}
+            {/* {isLoaded && sessionLinks} */}
           </li>
         </ul>
         </div>

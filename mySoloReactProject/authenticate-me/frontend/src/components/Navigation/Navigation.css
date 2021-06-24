@@ -179,6 +179,33 @@
   z-index: 5;
 }
 
+#profile-logout-link {
+  margin-top: 70px;
+  margin-right: 55px;
+}
+
+.profile-dropdown {
+  padding: 0 25px 0 0;
+  margin-top: 25px;
+  margin-right: 140px;
+}
+
+.logout-button-div {
+  grid-area: header3;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* #logged-in-username-div {
+  grid-area: header3;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 70px;
+  margin-right: 55px;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} */
+
 
 /* .fa-globe {
   height: 15px;
