@@ -46,9 +46,34 @@
 #eben {
   grid-area: header3;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
   margin-top: 20px;
+  margin-right: 75px;
+}
+
+#login-form, #signup-form {
+  grid-area: header3;
+  margin-top: 60px;
+  margin-right: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #FFF;
+}
+
+.login-label-div, #login-form-button-div {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+.signup-form-label-div, #signup-form-button-div {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+#signup-form input, #login-form input {
+  margin-left: 10px;
 }
 
 #ulNavLinkWrapperDiv {
@@ -58,7 +83,7 @@
 #loggedOutNavLinks {
   padding: 0 25px 0 0;
   /* text-align: center; */
-  margin-top: 80px;
+  margin-top: 25px;
   list-style-type: none;
 }
 
@@ -81,9 +106,10 @@
 .carousel {
   grid-area: footer;
   width: 95%;
-  height: 250px;
+  height: 275px;
   position: relative;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 .carousel .switchLeft,
@@ -95,10 +121,13 @@
   line-height: 250px;
   font-size: 25px;
   text-align: center;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   font-family: sans-serif;
   top: 0;
   z-index: 3;
+  cursor: pointer;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .carousel .switchLeft {
@@ -110,6 +139,46 @@
   position: absolute;
   right: -50px;
 }
+
+.carouselBox {
+  height: 250px;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 10px !important;
+  display: flex;
+  align-items: center;
+  /* background-color: #232323; */
+  /* background-color: #404040; */
+  /* background-color: black; */
+  border-radius: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  border: solid;
+  border-width: 5px;
+  border-color: #E8E8E8;
+}
+
+.carouselBox img {
+  min-width: 147px;
+  max-width: 147px;
+  height: 175px;
+  background-size: cover;
+  background-color: red;
+  margin: 5px 10px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+.carouselBox img:hover {
+  transform: scale(1.25,1.25);
+  z-index: 5;
+}
+
 
 /* .fa-globe {
   height: 15px;

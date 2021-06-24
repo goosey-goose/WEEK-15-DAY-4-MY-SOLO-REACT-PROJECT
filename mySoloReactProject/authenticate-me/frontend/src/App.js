@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -20,10 +21,10 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/login">
-            <LoginFormPage />
+            {/* <LoginFormPage /> */}
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
+            {/* <SignupFormPage /> */}
           </Route>
         </Switch>
       )}
