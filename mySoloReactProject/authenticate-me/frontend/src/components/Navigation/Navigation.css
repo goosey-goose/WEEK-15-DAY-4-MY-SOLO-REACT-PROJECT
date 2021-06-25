@@ -1,6 +1,7 @@
-/* body {
-  overflow-y: scroll;
-} */
+body {
+  /* overflow-y: scroll; */
+  /* scroll-behavior: smooth; */
+}
 
 .homeDivContainer {
   position: relative;
@@ -23,7 +24,7 @@
     "header1 header2 header3"
     "row2left row2middle row2right"
     "row3left row3middle row3right"
-    "row4left row4middle row4right"
+    "row4 row4 row4"
     "footer footer footer";
 }
 
@@ -152,7 +153,8 @@
   align-items: center;
   /* background-color: #232323; */
   /* background-color: #404040; */
-  /* background-color: black; */
+  /* background-color: grey; */
+  /* opacity: 0.5; */
   border-radius: 25px;
   padding-left: 20px;
   padding-right: 20px;
@@ -162,12 +164,27 @@
   border-color: #E8E8E8;
 }
 
+#confirmed-bookings-div {
+  /* grid-area: row4;
+  height: 250px;
+  width: auto;
+  background-color: grey;
+  opacity: 0.5;
+  margin-bottom: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 25px;
+  border: solid;
+  border-width: 5px;
+  border-color: #E8E8E8; */
+}
+
 .carouselBox img {
   min-width: 147px;
   max-width: 147px;
   height: 175px;
   background-size: cover;
-  background-color: red;
+  background-color: black;
   margin: 5px 10px;
   cursor: pointer;
   transition: 0.5s ease;
@@ -211,6 +228,17 @@
   margin-right: 10px;
 }
 
+
+
+
+
+
+
+
+/* .homeDivContainer {
+  scroll-behavior: smooth;
+} */
+
 /* #logged-in-username-div {
   grid-area: header3;
   display: flex;
@@ -235,8 +263,8 @@
   margin: 0;
 } */
 
-/* .test {
+#test {
   width: 100px;
   height: 3000px;
   background-color: red;
-} */
+}

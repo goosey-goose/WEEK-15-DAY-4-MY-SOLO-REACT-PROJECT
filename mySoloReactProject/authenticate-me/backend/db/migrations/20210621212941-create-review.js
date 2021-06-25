@@ -11,13 +11,11 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: { model: 'Users' }
       },
       spotId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: { model: 'Spots' }
       },
       review: {

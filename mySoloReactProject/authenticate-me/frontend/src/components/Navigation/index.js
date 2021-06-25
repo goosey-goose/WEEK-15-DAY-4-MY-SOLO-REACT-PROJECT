@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
+import ConfirmedBookingsDiv from '../ConfirmedBookingsDiv';
 import './Navigation.css';
 // const { Spot } = require('../../../../backend/db/models');
 
@@ -13,7 +14,9 @@ function Navigation({ isLoaded }){
   const [showMenu, setShowMenu] = useState(false);//////////////
   const [isLoginFormPage, setIsLoginFormPage] = useState(false);
   const [isSignupFormPage, setIsSignupFormPage] = useState(false);
-  console.log("eben 1");
+  let myDate = new Date();
+  // console.log(myDate.getMonth(), myDate.getDate(), myDate.getFullYear());
+  // console.log(sessionUser);
 
 
   //for carousel
@@ -144,6 +147,7 @@ function Navigation({ isLoaded }){
 
   let loginComponent = <LoginFormPage />;
   let signupComponent = <SignupFormPage />;
+  let confirmedBookingsComponent = <ConfirmedBookingsDiv />
 
 
 
@@ -152,6 +156,8 @@ function Navigation({ isLoaded }){
     <div className="homeDivContainer">
       <img className="homeBackground__romeImage" src="../../images/rome-6207755_1920.jpg"></img>
       <div className="outerGridDiv">
+      {/* <div id="confirmed-bookings-div"></div> */}
+      {sessionUser && confirmedBookingsComponent}
       <div id="medieval-name-logo">
       <i class="fas fa-chess-rook"></i>
         <text>medievalbnb</text>
@@ -185,7 +191,7 @@ function Navigation({ isLoaded }){
         </div>
       </div>
     </div>
-    <div className="test"></div>
+    <div id="test"></div>
     </>
   );
 }

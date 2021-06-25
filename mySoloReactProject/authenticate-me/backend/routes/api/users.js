@@ -2,7 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Spot, Image } = require('../../db/models');
+const { User, Spot, Image, Booking } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -51,10 +51,26 @@ router.post(
 
 
 
-////////////////// EBEN TEST ROUTE
+////////////////// EBEN FIRST TEST ROUTE; FIND ALL IMAGES
 router.get('/eben', asyncHandler( async (req, res) => {
   const spots = await Image.findAll();
   res.json(spots);
+}));
+
+
+
+////////////////// EBEN FIND A SPECIFIC USER'S BOOKINGS
+router.get('/bookings/:personId', asyncHandler( async (req, res) => {
+  const bookings = await User.findOne({
+    where: parseInt(req.params.personId),
+    include: {
+      model: Booking,
+      include: [Spot]
+    }
+  });
+  res.json(bookings);
+
+
 }));
 
 

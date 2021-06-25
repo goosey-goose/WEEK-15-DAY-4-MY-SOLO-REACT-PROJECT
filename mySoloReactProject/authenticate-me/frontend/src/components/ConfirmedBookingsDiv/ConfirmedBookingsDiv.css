@@ -1,0 +1,14 @@
+#confirmed-bookings-div {
+  grid-area: row4;
+  height: 250px;
+  width: auto;
+  background-color: grey;
+  /* opacity: 0.5; */
+  margin-bottom: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 25px;
+  border: solid;
+  border-width: 5px;
+  border-color: #E8E8E8;
+}
