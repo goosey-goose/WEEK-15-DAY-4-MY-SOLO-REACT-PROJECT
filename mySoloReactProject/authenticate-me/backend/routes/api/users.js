@@ -72,12 +72,20 @@ router.get('/bookings/:personId', asyncHandler( async (req, res) => {
     }
   });
   res.json(bookings);
-
-
 }));
 
 
-
+////////////////// EBEN CREATE A NEW BOOKING
+router.post('/bookings/new', asyncHandler( async (req, res) => {
+  const { spotId, userId, startDate, endDate } = req.body;
+  const newBooking = await Booking.create({
+    spotId,
+    userId,
+    startDate,
+    endDate
+  });
+  res.json(newBooking);
+}));
 
 
 

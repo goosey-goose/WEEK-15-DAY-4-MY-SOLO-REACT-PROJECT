@@ -60,7 +60,7 @@ function Navigation({ isLoaded }){
     data.map((image, index) => {
       sliders.insertAdjacentHTML(
         "beforeend",
-        `<img class="img-${index} slider-img" src="${image.url}" />`
+        `<img class="img-${index} slider-img" src="${image.url}" alt="${index + 1}" />`
       );
     });
 
@@ -87,25 +87,36 @@ function Navigation({ isLoaded }){
   </button>
   </div>`;
 
+
+
     carouselImages.forEach((image) => {
       image.addEventListener("click", (event) => {
+        createNewBooking(event.target.alt);
         let displaySpotDiv = document.getElementById("display-selected-spot-div");
         displaySpotDiv.innerHTML = `<img src='${event.target.currentSrc}' />`;
         let outerDisplaySpotDiv = document.getElementById("outer-display-spot-menu");
         outerDisplaySpotDiv.innerHTML = `<div id="display-spot-menu">${htmlForSpotMenu}</div>${spotButtonDivHTML}`;
+
       });
     });
 
     scrollPerClick = 400;
   }
 
-  // getAllSpots();
+
+  let test = "gouda cheese";
+  /////// EBEN CREATE NEW BOOKING
+  const createNewBooking = (altImageValue) => {
+    // console.log(altImageValue);
+    // console.log(sessionUser);
+  }
 
 
 
 
   const openMenu = () => { ////////////////////
-    console.log(showMenu);
+    // console.log(sessionUser);
+    // console.log(showMenu);
     if (showMenu) return;
     setShowMenu(true);
   };
