@@ -22,12 +22,94 @@ body {
   align-content: stretch;
   grid-template-areas:
     "header1 header2 header3"
-    "row2left row2middle row2right"
-    "row3left row3middle row3right"
+    "displayspot resForm row2right"
+    "displayspot resForm row3right"
     "row4 row4 row4"
     "footer footer footer";
 }
 
+#outer-display-selected-spot-div {
+  grid-area: displayspot;
+  max-height: 240px;
+  max-width: 480px;
+  overflow: hidden;
+  /* background-color: black; */
+  /* margin-bottom: 10px; */
+}
+
+#display-selected-spot-div {
+  margin-left: 50px;
+  display: inline-block;
+}
+
+#display-selected-spot-div img {
+  /* border: solid;
+  border-width: 5px; */
+  max-height: 213px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: solid;
+  border-color: white;
+  border-width: 10px;
+}
+
+#outer-display-spot-menu {
+  grid-area: resForm;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* display: inline-block; */
+  /* background-color: white;
+  height: 50px;
+  width: 50px; */
+}
+
+#display-spot-menu {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  height: 215px;
+  width: 500px;
+  border-radius: 25px;
+  /* padding-left: 20px; */
+  padding-top: 20px;
+}
+
+#display-spot-menu input, #display-spot-menu label {
+  margin: 10px;
+}
+
+#display-spot-menu label {
+  font-size: larger;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#book-it-button-div {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: 115px;
+  /* background-color: red; */
+}
+
+#book-it-button-div button {
+  height: 80px;
+  width: 80px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
+  font-size: 70px;
+}
+
+#book-thy-kingdom-div {
+  display: flex;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 35px;
+}
 
 
 .homeBackground__romeImage {
@@ -160,7 +242,7 @@ body {
   padding-right: 20px;
   padding-top: 10px;
   border: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: #E8E8E8;
 }
 
@@ -187,6 +269,7 @@ body {
   background-color: black;
   margin: 5px 10px;
   cursor: pointer;
+  border-radius: 25px;
   transition: 0.5s ease;
   z-index: 2;
 }
@@ -263,8 +346,8 @@ body {
   margin: 0;
 } */
 
-#test {
+/* #test {
   width: 100px;
   height: 3000px;
   background-color: red;
-}
+} */

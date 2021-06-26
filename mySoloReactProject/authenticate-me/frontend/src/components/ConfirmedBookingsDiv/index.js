@@ -14,7 +14,7 @@ function ConfirmedBookingsDiv(){
 
   // EBEN CONDITIONAL CHECK
   if (booking.Bookings) {
-    console.log((booking.Bookings));
+    console.log((booking.Bookings)["0"]["Spot"]["Images"][0]["url"]);
   }
 
   useEffect(() => {
@@ -23,8 +23,8 @@ function ConfirmedBookingsDiv(){
 
   return (
     <div id="confirmed-bookings-div">
-      {booking.Bookings && booking.Bookings.map((item) => {
-        return <div>100</div>;
+      {booking.Bookings && booking.Bookings.map((item, index) => {
+        return <div className="individual-confirmed-booking-div"><img src={(booking.Bookings)[index]["Spot"]["Images"][0]["url"]} /></div>;
       })}
     </div>
   );

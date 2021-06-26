@@ -9,6 +9,26 @@
   margin-right: 50px;
   border-radius: 25px;
   border: solid;
+  border-width: 10px;
+  border-color: #E8E8E8;
+  overflow-y: auto;
+
+}
+
+/* #outer-eben {
+  grid-area: row4;
+  border-radius: 25px;
+  border: solid;
   border-width: 5px;
   border-color: #E8E8E8;
+  overflow: hidden;
+} */
+
+.individual-confirmed-booking-div {
+  display: inline;
+  margin-right: 15px;
+}
+
+.individual-confirmed-booking-div img {
+  border-radius: 25px;
 }

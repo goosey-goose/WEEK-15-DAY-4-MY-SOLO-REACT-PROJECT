@@ -61,7 +61,39 @@ function Navigation({ isLoaded }){
       sliders.insertAdjacentHTML(
         "beforeend",
         `<img class="img-${index} slider-img" src="${image.url}" />`
-      )
+      );
+    });
+
+    let carouselImages = document.querySelector(".carouselBox").childNodes;
+
+    let htmlForSpotMenu = `<label for="start">From:</label>
+
+    <input type="date" id="start" name="trip-start"
+           value="2018-07-22"
+           min="2018-01-01" max="2018-12-31">
+
+           <label for="end">To:</label>
+
+    <input type="date" id="end" name="trip-start"
+          value="2018-07-22"
+          min="2018-01-01" max="2018-12-31">`;
+
+    let spotButtonDivHTML = `<div id="book-it-button-div">
+    <div id="book-thy-kingdom-div">
+      BOOK THY KINGDOM!
+    </div>
+    <button>
+    <i class="fab fa-fort-awesome-alt"></i>
+  </button>
+  </div>`;
+
+    carouselImages.forEach((image) => {
+      image.addEventListener("click", (event) => {
+        let displaySpotDiv = document.getElementById("display-selected-spot-div");
+        displaySpotDiv.innerHTML = `<img src='${event.target.currentSrc}' />`;
+        let outerDisplaySpotDiv = document.getElementById("outer-display-spot-menu");
+        outerDisplaySpotDiv.innerHTML = `<div id="display-spot-menu">${htmlForSpotMenu}</div>${spotButtonDivHTML}`;
+      });
     });
 
     scrollPerClick = 400;
@@ -156,7 +188,14 @@ function Navigation({ isLoaded }){
     <div className="homeDivContainer">
       <img className="homeBackground__romeImage" src="../../images/rome-6207755_1920.jpg"></img>
       <div className="outerGridDiv">
-      {/* <div id="confirmed-bookings-div"></div> */}
+      <div id="outer-display-spot-menu">
+
+      </div>
+      <div id="outer-display-selected-spot-div">
+      <div id="display-selected-spot-div">
+
+      </div>
+      </div>
       {sessionUser && confirmedBookingsComponent}
       <div id="medieval-name-logo">
       <i class="fas fa-chess-rook"></i>

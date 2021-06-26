@@ -65,7 +65,10 @@ router.get('/bookings/:personId', asyncHandler( async (req, res) => {
     where: parseInt(req.params.personId),
     include: {
       model: Booking,
-      include: [Spot]
+      include: {
+        model: Spot,
+        include: [Image]
+      }
     }
   });
   res.json(bookings);
