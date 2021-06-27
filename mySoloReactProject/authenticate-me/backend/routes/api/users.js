@@ -85,10 +85,11 @@ router.post('/bookings/new', asyncHandler( async (req, res) => {
     startDate,
     endDate
   });
-  const testData = await Booking.findAll({
-    where: 1,
+  const testData = await Booking.findOne({
+    where: {id: newBooking.id},
     include: {
-      model: Spot
+      model: Spot,
+      include: [Image]
     }
   })
   // const testData = await Booking.findByPk(1);
@@ -97,7 +98,7 @@ router.post('/bookings/new', asyncHandler( async (req, res) => {
   // console.log(newBooking);
   // const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
   // const data = await results.json();
-  res.json(newBooking);
+  res.json(testData);
 }));
 
 
