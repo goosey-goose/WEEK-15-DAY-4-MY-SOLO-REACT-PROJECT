@@ -22,8 +22,8 @@ body {
   align-content: stretch;
   grid-template-areas:
     "header1 header2 header3"
-    "displayspot resForm row2right"
-    "displayspot resForm row3right"
+    "displayspot resForm modmenu"
+    "displayspot resForm modmenu"
     "row4 row4 row4"
     "footer footer footer";
 }
