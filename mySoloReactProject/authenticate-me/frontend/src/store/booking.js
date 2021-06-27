@@ -43,11 +43,12 @@ export const getNewBooking = (bookingInfo) => async (dispatch) => {
   return response;
 };
 
-let bookingInformation;
-export const removeBooking = (bookingInformation) = async (dispatch) => {
-  console.log("FRONTEND REMOVE BOOKING THUNK");
+// let bookingInformation;////////////////////////////////////////////////////////////////////////////////////////////////////
+export const removeBooking = (bookingInformation) => async (dispatch) => {
+  console.log("ENTERED FRONTEND REMOVE BOOKING THUNK");
 
-  const { id } = bookingInformation;
+  const { id, userId } = bookingInformation;
+  console.log(id);
 
   const response = await csrfFetch("http://localhost:3000/api/users/bookings/delete", {
     method: "DELETE",
@@ -55,8 +56,13 @@ export const removeBooking = (bookingInformation) = async (dispatch) => {
       id
     })
   });
-  // const data = await response.json();
+  const data = await response.json();
   // dispatch(removeExistingBooking(data));
+  // console.log(data);
+  const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
+  const data2 = await results.json();
+  // console.log(data);
+  dispatch(setBooking(data2));
   return response;
 }
 

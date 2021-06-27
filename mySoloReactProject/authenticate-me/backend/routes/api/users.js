@@ -106,10 +106,12 @@ router.post('/bookings/new', asyncHandler( async (req, res) => {
 
 // EBEN DELETE A SINGLE BOOKING
 router.delete('/bookings/delete', asyncHandler( async (req, res) => {
-  console.log("BACKEND DELETE BOOKING ROUTE");
+  console.log("ENTERED BACKEND DELETE BOOKING ROUTE");
   const { id } = req.body;
   const bookingToDelete = await Booking.findByPk(id);
-  console.log(bookingToDelete);
+  console.log("BACKEND BOOKING TO DELETE", bookingToDelete);
+  await bookingToDelete.destroy();
+  res.json(bookingToDelete);
 }));
 
 
