@@ -77,6 +77,7 @@ router.get('/bookings/:personId', asyncHandler( async (req, res) => {
 
 ////////////////// EBEN CREATE A NEW BOOKING
 router.post('/bookings/new', asyncHandler( async (req, res) => {
+  console.log("Mickey Mouse");
   const { spotId, userId, startDate, endDate } = req.body;
   const newBooking = await Booking.create({
     spotId,
@@ -84,6 +85,18 @@ router.post('/bookings/new', asyncHandler( async (req, res) => {
     startDate,
     endDate
   });
+  const testData = await Booking.findAll({
+    where: 1,
+    include: {
+      model: Spot
+    }
+  })
+  // const testData = await Booking.findByPk(1);
+  console.log('####################################', testData);
+  console.log(testData.Spot);
+  // console.log(newBooking);
+  // const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
+  // const data = await results.json();
   res.json(newBooking);
 }));
 

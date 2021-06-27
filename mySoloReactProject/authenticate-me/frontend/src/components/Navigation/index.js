@@ -1,22 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
 import ConfirmedBookingsDiv from '../ConfirmedBookingsDiv';
+import { getBooking } from '../../store/booking';
+import { getNewBooking } from '../../store/booking';
 import './Navigation.css';
 // const { Spot } = require('../../../../backend/db/models');
 
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const reduxStateObject = useSelector(state => state);
   const [showMenu, setShowMenu] = useState(false);//////////////
   const [isLoginFormPage, setIsLoginFormPage] = useState(false);
   const [isSignupFormPage, setIsSignupFormPage] = useState(false);
   let myDate = new Date();
   // console.log(myDate.getMonth(), myDate.getDate(), myDate.getFullYear());
   // console.log(sessionUser);
+  const dispatch = useDispatch();
 
 
   //for carousel
@@ -82,7 +86,7 @@ function Navigation({ isLoaded }){
     <div id="book-thy-kingdom-div">
       BOOK THY KINGDOM!
     </div>
-    <button>
+    <button id="booking-button">
     <i class="fab fa-fort-awesome-alt"></i>
   </button>
   </div>`;
@@ -91,12 +95,15 @@ function Navigation({ isLoaded }){
 
     carouselImages.forEach((image) => {
       image.addEventListener("click", (event) => {
-        createNewBooking(event.target.alt);
+        receiveAltImageValue(event.target.alt);
         let displaySpotDiv = document.getElementById("display-selected-spot-div");
         displaySpotDiv.innerHTML = `<img src='${event.target.currentSrc}' />`;
         let outerDisplaySpotDiv = document.getElementById("outer-display-spot-menu");
         outerDisplaySpotDiv.innerHTML = `<div id="display-spot-menu">${htmlForSpotMenu}</div>${spotButtonDivHTML}`;
-
+        let bookingButton = document.getElementById("booking-button");
+        bookingButton.addEventListener("click", () => {
+          createNewBooking();
+        })
       });
     });
 
@@ -104,17 +111,29 @@ function Navigation({ isLoaded }){
   }
 
 
-  let test = "gouda cheese";
+  let altImageValue;
+  const receiveAltImageValue = (value) => {
+    altImageValue = value;
+  }
+
+
+
+
   /////// EBEN CREATE NEW BOOKING
-  const createNewBooking = (altImageValue) => {
-    // console.log(altImageValue);
-    // console.log(sessionUser);
+  const createNewBooking = () => {
+    dispatch(getNewBooking({
+      spotId: altImageValue,
+      userId: "1",
+      startDate: "2022-1-2",
+      endDate: "2022-1-9"
+    })).catch((error) => console.log(error));
   }
 
 
 
 
   const openMenu = () => { ////////////////////
+    console.log(reduxStateObject);
     // console.log(sessionUser);
     // console.log(showMenu);
     if (showMenu) return;
@@ -135,6 +154,8 @@ function Navigation({ isLoaded }){
     const closeMenu = () => {
       setShowMenu(false);
     };
+
+    // dispatch(getBooking(sessionUser.id)).catch((error) => console.log(error));
 
     document.addEventListener('click', closeMenu);
 

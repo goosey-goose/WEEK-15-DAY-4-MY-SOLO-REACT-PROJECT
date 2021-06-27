@@ -18,7 +18,7 @@ export const setNewBooking = (payload) => {
 export const getBooking = (userId) => async (dispatch) => {
   const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
   const data = await results.json();
-
+  // console.log(data);
   dispatch(setBooking(data));
 };
 
@@ -52,11 +52,11 @@ const bookingReducer = (state = initState, action) => {
       newBooking = Object.assign({}, action.payload);
       return newBooking;
     case SET_NEW_BOOKING:
-      newBooking = {...state, ...action.payload};
+      newBooking = {...state, Bookings: [...state.Bookings, action.payload]};
       return newBooking;
     default:
       return state;
   }
 };
-
+//...action.payload
 export default bookingReducer;
