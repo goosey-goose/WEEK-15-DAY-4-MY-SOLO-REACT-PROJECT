@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getBooking } from '../../store/booking';
+import { getBooking, removeBooking } from '../../store/booking';
 import './ConfirmedBookingsDiv.css';
 
 function ConfirmedBookingsDiv(){
@@ -10,6 +10,7 @@ function ConfirmedBookingsDiv(){
   const sessionUser = useSelector(state => state.session.user);
   const booking = useSelector(({ booking }) => booking);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [altImageValueAgain, setAltImageValueAgain] = useState(null);
   // const booking = useSelector(state => state.booking.Bookings);
   // dispatch(getBooking(sessionUser.id)).catch((error) => console.log(error));
 
@@ -25,37 +26,47 @@ function ConfirmedBookingsDiv(){
   //     ++count;
   //   })
   // }
-  let one;
   const openBookingMenu = () => {
-    console.log("SATURDAY");
+    // console.log("SATURDAY");
     if (!isMenuOpen) {
       setIsMenuOpen(true);
-      one = (<div id="outer-booking-modification-menu">I pooped</div>);
     } else {
       setIsMenuOpen(false);
     }
-    console.log(isMenuOpen);
     // let outerBookingModificationMenu = document.getElementById("outer-booking-modification-menu");
     // outerBookingModificationMenu.innerHTML = "<div><p>I tired</p></div>";
+    // let button2 = document.getElementById("button-2-delete");
+    // button2.addEventListener("click", (event) => {
+    //   deleteMyBooking();
+    // })
   }
 
-  // let bookingModificationMenu = (
-  //   <div id="booking-modification-menu">
-  //       <p>EBEN</p>
-  //   </div>
-  // );
+  const deleteMyBooking = () => {
+    console.log(altImageValueAgain);
+    // dispatch(removeBooking(1));
+  }
 
   useEffect(() => {
     dispatch(getBooking(sessionUser.id)).catch((error) => console.log(error));
     console.log("useEffect() called here");
-  }, [dispatch]);
+
+    setTimeout(() => {
+      let confirmedBookings = document.getElementById("confirmed-bookings-div").childNodes;
+      let confirmedBookingsArray = Array.from(confirmedBookings);
+      confirmedBookingsArray.forEach((item) => {
+        item.addEventListener("click", (event) => {
+          setAltImageValueAgain(event.target.alt);
+        })
+      })
+    }, 1000);
+  }, [dispatch, altImageValueAgain]);
 
   return (
     <>
-    {isMenuOpen && (<div id="outer-booking-modification-menu">I pooped</div>)}
+    {isMenuOpen && (<div id="outer-booking-modification-menu"><div><button>Button 1</button><button id="button-2-delete" onClick={deleteMyBooking}>Delete</button></div></div>)}
     <div id="confirmed-bookings-div">
-      {booking.Bookings && booking.Bookings.map((item, index) => {//
-        return <div className="individual-confirmed-booking-div" onClick={openBookingMenu}><img src={(booking.Bookings)[index]["Spot"]["Images"][0]["url"]} /></div>;//
+      {booking.Bookings && booking.Bookings.map((item, index) => {
+        return <div className="individual-confirmed-booking-div" onClick={openBookingMenu}><img src={(booking.Bookings)[index]["Spot"]["Images"][0]["url"]} alt={index + 1} /></div>;
       })}
     </div>
     </>

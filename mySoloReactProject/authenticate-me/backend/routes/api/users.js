@@ -93,12 +93,23 @@ router.post('/bookings/new', asyncHandler( async (req, res) => {
     }
   })
   // const testData = await Booking.findByPk(1);
-  console.log('####################################', testData);
-  console.log(testData.Spot);
+  // console.log('####################################', testData);
+  // console.log(testData.Spot);
   // console.log(newBooking);
   // const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
   // const data = await results.json();
   res.json(testData);
+}));
+
+
+
+
+// EBEN DELETE A SINGLE BOOKING
+router.delete('/bookings/delete', asyncHandler( async (req, res) => {
+  console.log("BACKEND DELETE BOOKING ROUTE");
+  const { id } = req.body;
+  const bookingToDelete = await Booking.findByPk(id);
+  console.log(bookingToDelete);
 }));
 
 

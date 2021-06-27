@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 // ACTION TYPE DEFINITIONS
 const SET_BOOKING = "bookings/SET_BOOKING";
 const SET_NEW_BOOKING = "bookings/SET_NEW_BOOKING";
+const DELETE_BOOKING = "bookings/DELETE_BOOKING";
 
 // ACTION CREATORS
 export const setBooking = (payload) => {
@@ -13,6 +14,9 @@ export const setNewBooking = (payload) => {
   return { type: SET_NEW_BOOKING, payload };
 }
 
+export const removeExistingBooking = (payload) => {
+  return { type: DELETE_BOOKING, payload };
+}
 
 // THUNK CREATORS
 export const getBooking = (userId) => async (dispatch) => {
@@ -23,7 +27,6 @@ export const getBooking = (userId) => async (dispatch) => {
 };
 
 export const getNewBooking = (bookingInfo) => async (dispatch) => {
-  console.log("###############################");
   const { spotId, userId, startDate, endDate } = bookingInfo;
 
   const response = await csrfFetch("http://localhost:3000/api/users/bookings/new", {
@@ -39,6 +42,23 @@ export const getNewBooking = (bookingInfo) => async (dispatch) => {
   dispatch(setNewBooking(data));
   return response;
 };
+
+let bookingInformation;
+export const removeBooking = (bookingInformation) = async (dispatch) => {
+  console.log("FRONTEND REMOVE BOOKING THUNK");
+
+  const { id } = bookingInformation;
+
+  const response = await csrfFetch("http://localhost:3000/api/users/bookings/delete", {
+    method: "DELETE",
+    body: JSON.stringify({
+      id
+    })
+  });
+  // const data = await response.json();
+  // dispatch(removeExistingBooking(data));
+  return response;
+}
 
 
 // DEFINE AN INITIAL STATE
