@@ -281,7 +281,15 @@ body {
 
 #profile-logout-link {
   margin-top: 70px;
+  /* margin-right: 55px; */
+  position: absolute;
   margin-right: 55px;
+}
+
+#delete-account-link {
+  /* position: absolute; */
+  margin-top: 25px;
+  margin-right: 175px;
 }
 
 .profile-dropdown {
@@ -294,6 +302,7 @@ body {
   grid-area: header3;
   display: flex;
   justify-content: flex-end;
+  /* position: relative; */
 }
 
 #medieval-name-logo {

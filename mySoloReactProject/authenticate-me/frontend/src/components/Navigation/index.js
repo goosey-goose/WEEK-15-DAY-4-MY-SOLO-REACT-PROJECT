@@ -13,6 +13,9 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const theSessionUserId = useRef(null);
+  // const [theSessionUserId, setTheSessionUserId] = useState(null);
+  // console.log(sessionUser);
   const reduxStateObject = useSelector(state => state);
   const [showMenu, setShowMenu] = useState(false);//////////////
   const [isLoginFormPage, setIsLoginFormPage] = useState(false);
@@ -22,7 +25,8 @@ function Navigation({ isLoaded }){
   // console.log(myDate.getMonth(), myDate.getDate(), myDate.getFullYear());
   // console.log(sessionUser);
   const dispatch = useDispatch();
-
+  // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", sessionUser);
+  var frank;
 
   //for carousel
   // const sliders = useRef();
@@ -106,6 +110,8 @@ function Navigation({ isLoaded }){
         let bookingButton = document.getElementById("booking-button");
         bookingButton.addEventListener("click", () => {
           createNewBooking();
+          // initNewBookingCreation();
+          // console.log(sessionUser.id);
         })
       });
     });
@@ -120,13 +126,12 @@ function Navigation({ isLoaded }){
   }
 
 
-
-
   /////// EBEN CREATE NEW BOOKING
   const createNewBooking = () => {
+    // console.log(sUiD);
     dispatch(getNewBooking({
       spotId: altImageValue,
-      userId: "1",
+      userId: theSessionUserId.current,
       startDate: "2022-1-2",
       endDate: "2022-1-9"
     })).catch((error) => console.log(error));
@@ -136,7 +141,8 @@ function Navigation({ isLoaded }){
 
 
   const openMenu = () => { ////////////////////
-    console.log(reduxStateObject);
+    // console.log(theSessionUserId);
+    // console.log(reduxStateObject);
     // console.log(sessionUser);
     // console.log(showMenu);
     if (showMenu) return;
@@ -148,7 +154,7 @@ function Navigation({ isLoaded }){
 
 
 
-
+  // console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", sessionUser);
   useEffect(() => { /////////////////////
     // console.log("eben 2");
     getAllSpots();
@@ -158,6 +164,8 @@ function Navigation({ isLoaded }){
       setShowMenu(false);
     };
 
+    // if (sessionUser) setTheSessionUserId(sessionUser.id);
+    // theSessionUserId = sessionUser.id;
     // dispatch(getBooking(sessionUser.id)).catch((error) => console.log(error));
 
     document.addEventListener('click', closeMenu);
@@ -187,10 +195,16 @@ function Navigation({ isLoaded }){
   }
 
   let sessionLinks;
+  // let theSessionUserId;
+  // console.log("######################", sessionUser);
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
+    // theSessionUserId = sessionUser.id;
+    // console.log(theSessionUserId);
+    console.log(sessionUser);
+    theSessionUserId.current = sessionUser.id;
   } else {
     sessionLinks = (
       <>

@@ -52,7 +52,16 @@ router.post(
 
 
 ///////////////// EBEN DELETE USER ACCOUNT
+router.delete('/deleteIndividualUser', asyncHandler( async (req, res) => {
+  console.log("INSIDE BACKEND DELETE USER");
+  const { userId } = req.body;
+  console.log(userId);
 
+  const userToDelete = await User.findByPk(userId);
+  console.log(userToDelete);
+  await userToDelete.destroy();
+  res.json(userToDelete);
+}));
 
 
 
