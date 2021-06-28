@@ -237,14 +237,18 @@ function Navigation({ isLoaded }){
     <div className="homeDivContainer">
       <img className="homeBackground__romeImage" src="../../images/rome-6207755_1920.jpg"></img>
       <div className="outerGridDiv">
-      <div id="outer-display-spot-menu">
+      {sessionUser &&
+      (<div id="outer-display-spot-menu">
 
-      </div>
-      <div id="outer-display-selected-spot-div">
+      </div>)
+      }
+      {sessionUser &&
+      (<div id="outer-display-selected-spot-div">
       <div id="display-selected-spot-div">
 
       </div>
-      </div>
+      </div>)
+      }
       {sessionUser && confirmedBookingsComponent}
       <div id="medieval-name-logo">
       <i class="fas fa-chess-rook"></i>
