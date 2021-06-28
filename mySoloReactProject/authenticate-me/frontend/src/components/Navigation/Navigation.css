@@ -1,6 +1,11 @@
+body {
+  /* overflow-y: scroll; */
+  /* scroll-behavior: smooth; */
+}
+
 .homeDivContainer {
   position: relative;
-  height: 700px;
+  height: 950px;
   overflow: hidden;
 }
 
@@ -17,12 +22,94 @@
   align-content: stretch;
   grid-template-areas:
     "header1 header2 header3"
-    "row2left row2middle row2right"
-    "row3left row3middle row3right"
-    "row4left row4middle row4right"
-    "footer1 footer2 footer3";
+    "displayspot resForm modmenu"
+    "displayspot resForm modmenu"
+    "row4 row4 row4"
+    "footer footer footer";
 }
 
+#outer-display-selected-spot-div {
+  grid-area: displayspot;
+  max-height: 240px;
+  max-width: 480px;
+  overflow: hidden;
+  /* background-color: black; */
+  /* margin-bottom: 10px; */
+}
+
+#display-selected-spot-div {
+  margin-left: 50px;
+  display: inline-block;
+}
+
+#display-selected-spot-div img {
+  /* border: solid;
+  border-width: 5px; */
+  max-height: 213px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: solid;
+  border-color: white;
+  border-width: 10px;
+}
+
+#outer-display-spot-menu {
+  grid-area: resForm;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* display: inline-block; */
+  /* background-color: white;
+  height: 50px;
+  width: 50px; */
+}
+
+#display-spot-menu {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  height: 215px;
+  width: 500px;
+  border-radius: 25px;
+  /* padding-left: 20px; */
+  padding-top: 20px;
+}
+
+#display-spot-menu input, #display-spot-menu label {
+  margin: 10px;
+}
+
+#display-spot-menu label {
+  font-size: larger;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#book-it-button-div {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: 115px;
+  /* background-color: red; */
+}
+
+#book-it-button-div button {
+  height: 80px;
+  width: 80px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
+  font-size: 70px;
+}
+
+#book-thy-kingdom-div {
+  display: flex;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 35px;
+}
 
 
 .homeBackground__romeImage {
@@ -39,13 +126,237 @@
   /* align-self: center; */
 }
 
+#eben {
+  grid-area: header3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-right: 75px;
+}
+
+#login-form, #signup-form {
+  grid-area: header3;
+  margin-top: 60px;
+  margin-right: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #FFF;
+}
+
+.login-label-div, #login-form-button-div {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+.signup-form-label-div, #signup-form-button-div {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+#signup-form input, #login-form input {
+  margin-left: 10px;
+}
+
 #ulNavLinkWrapperDiv {
   /* display: flex; */
 }
 
+#loggedOutNavLinks {
+  padding: 0 25px 0 0;
+  /* text-align: center; */
+  margin-top: 25px;
+  list-style-type: none;
+}
 
-.test {
+.link {
+  color: #FFF;
+  font-size: larger;
+  margin: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+}
+
+#homePageButton {
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel {
+  grid-area: footer;
+  width: 95%;
+  height: 275px;
+  position: relative;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.carousel .switchLeft,
+.carousel .switchRight {
+  color: white;
+  font-weight: bold;
+  height: 100%;
+  width: 45px;
+  line-height: 250px;
+  font-size: 25px;
+  text-align: center;
+  /* background-color: lightgreen; */
+  font-family: sans-serif;
+  top: 0;
+  z-index: 3;
+  cursor: pointer;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.carousel .switchLeft {
+  position: absolute;
+  left: -50px;
+}
+
+.carousel .switchRight {
+  position: absolute;
+  right: -50px;
+}
+
+.carouselBox {
+  height: 250px;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 10px !important;
+  display: flex;
+  align-items: center;
+  /* background-color: #232323; */
+  /* background-color: #404040; */
+  /* background-color: grey; */
+  /* opacity: 0.5; */
+  border-radius: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  border: solid;
+  border-width: 10px;
+  border-color: #E8E8E8;
+}
+
+#confirmed-bookings-div {
+  /* grid-area: row4;
+  height: 250px;
+  width: auto;
+  background-color: grey;
+  opacity: 0.5;
+  margin-bottom: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 25px;
+  border: solid;
+  border-width: 5px;
+  border-color: #E8E8E8; */
+}
+
+.carouselBox img {
+  min-width: 147px;
+  max-width: 147px;
+  height: 175px;
+  background-size: cover;
+  background-color: black;
+  margin: 5px 10px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+.carouselBox img:hover {
+  transform: scale(1.25,1.25);
+  z-index: 5;
+}
+
+#profile-logout-link {
+  margin-top: 70px;
+  /* margin-right: 55px; */
+  position: absolute;
+  margin-right: 55px;
+}
+
+#delete-account-link {
+  /* position: absolute; */
+  margin-top: 25px;
+  margin-right: 175px;
+}
+
+.profile-dropdown {
+  padding: 0 25px 0 0;
+  margin-top: 25px;
+  margin-right: 140px;
+}
+
+.logout-button-div {
+  grid-area: header3;
+  display: flex;
+  justify-content: flex-end;
+  /* position: relative; */
+}
+
+#medieval-name-logo {
+  grid-area: header1;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 25px;
+  margin-top: 25px;
+  margin-left: 110px;
+  color: #FFF;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.fa-chess-rook {
+  margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+/* .homeDivContainer {
+  scroll-behavior: smooth;
+} */
+
+/* #logged-in-username-div {
+  grid-area: header3;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 70px;
+  margin-right: 55px;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} */
+
+
+/* .fa-globe {
+  height: 15px;
+  width: 15px;
+} */
+
+
+
+
+/* .homePageButton {
+  padding: 0;
+  margin: 0;
+} */
+
+/* #test {
   width: 100px;
   height: 3000px;
   background-color: red;
-}
+} */

@@ -1,0 +1,48 @@
+#confirmed-bookings-div {
+  grid-area: row4;
+  height: 250px;
+  width: auto;
+  background-color: grey;
+  /* opacity: 0.5; */
+  margin-bottom: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 25px;
+  border: solid;
+  border-width: 10px;
+  border-color: #E8E8E8;
+  overflow-y: auto;
+
+}
+
+/* #outer-eben {
+  grid-area: row4;
+  border-radius: 25px;
+  border: solid;
+  border-width: 5px;
+  border-color: #E8E8E8;
+  overflow: hidden;
+} */
+
+.individual-confirmed-booking-div {
+  /* position: relative; */
+  display: inline;
+  margin-right: 15px;
+}
+
+/* .modify-booking-small-menu {
+  position: absolute;
+} */
+
+.individual-confirmed-booking-div img {
+  border-radius: 25px;
+  max-height: 250px;
+}
+
+#outer-booking-modification-menu {
+  grid-area: modmenu;
+  height: 235px;
+  width: 250px;
+  background-color: white;
+  border-radius: 25px;
+}

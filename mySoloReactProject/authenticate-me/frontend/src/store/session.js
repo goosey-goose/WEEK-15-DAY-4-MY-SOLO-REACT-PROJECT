@@ -16,6 +16,28 @@ const removeUser = () => {
   };
 };
 
+
+///////////////////////// EBEN FRONTEND DELETE USER
+export const getDeleteUser = (user) => async (dispatch) => {
+  console.log("INSIDE FRONTEND DELETE USER");
+  const { userId } = user;
+  console.log("fart", userId);
+
+  const response = await csrfFetch("http://localhost:3000/api/users/deleteIndividualUser", {
+    method: "DELETE",
+    body: JSON.stringify({
+      userId
+    })
+  });
+  console.log("step 1");
+  const data = await response.json();
+  dispatch(removeUser());
+  return response;
+};
+
+
+
+
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
