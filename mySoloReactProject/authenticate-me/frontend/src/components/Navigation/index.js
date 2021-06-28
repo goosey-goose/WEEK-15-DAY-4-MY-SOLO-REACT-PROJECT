@@ -17,7 +17,8 @@ function Navigation({ isLoaded }){
   const [showMenu, setShowMenu] = useState(false);//////////////
   const [isLoginFormPage, setIsLoginFormPage] = useState(false);
   const [isSignupFormPage, setIsSignupFormPage] = useState(false);
-  let myDate = new Date();
+  // const [spotNumberForUpdate, setSpotNumberForUpdate] = useState(800);
+  // let myDate = new Date();
   // console.log(myDate.getMonth(), myDate.getDate(), myDate.getFullYear());
   // console.log(sessionUser);
   const dispatch = useDispatch();
@@ -96,6 +97,8 @@ function Navigation({ isLoaded }){
     carouselImages.forEach((image) => {
       image.addEventListener("click", (event) => {
         receiveAltImageValue(event.target.alt);
+        // setSpotNumberForUpdate(event.target.alt);
+        // console.log(event.target.alt);
         let displaySpotDiv = document.getElementById("display-selected-spot-div");
         displaySpotDiv.innerHTML = `<img src='${event.target.currentSrc}' />`;
         let outerDisplaySpotDiv = document.getElementById("outer-display-spot-menu");

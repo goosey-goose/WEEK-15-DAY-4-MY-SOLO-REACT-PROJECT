@@ -51,6 +51,11 @@ router.post(
 
 
 
+///////////////// EBEN DELETE USER ACCOUNT
+
+
+
+
 ////////////////// EBEN FIRST TEST ROUTE; FIND ALL IMAGES
 router.get('/eben', asyncHandler( async (req, res) => {
   const spots = await Image.findAll();
@@ -106,12 +111,26 @@ router.post('/bookings/new', asyncHandler( async (req, res) => {
 
 // EBEN DELETE A SINGLE BOOKING
 router.delete('/bookings/delete', asyncHandler( async (req, res) => {
-  console.log("ENTERED BACKEND DELETE BOOKING ROUTE");
+  // console.log("ENTERED BACKEND DELETE BOOKING ROUTE");
   const { id } = req.body;
   const bookingToDelete = await Booking.findByPk(id);
-  console.log("BACKEND BOOKING TO DELETE", bookingToDelete);
+  // console.log("BACKEND BOOKING TO DELETE", bookingToDelete);
   await bookingToDelete.destroy();
   res.json(bookingToDelete);
+}));
+
+
+// EBEN UPDATE A SINGLE BOOKING
+router.put('/bookings/updateBooking', asyncHandler( async (req, res) => {
+  console.log("ENTERED BACKEND UPDATE BOOKING ROUTE");
+  const { id, newSpotId } = req.body;
+  const bookingToUpdate = await Booking.findByPk(id);
+  console.log("BACKEND BOOKING TO UPDATE", bookingToUpdate);
+  if (newSpotId) {
+    bookingToUpdate.spotId = newSpotId;
+    await bookingToUpdate.save();
+  }
+  res.json(bookingToUpdate);
 }));
 
 

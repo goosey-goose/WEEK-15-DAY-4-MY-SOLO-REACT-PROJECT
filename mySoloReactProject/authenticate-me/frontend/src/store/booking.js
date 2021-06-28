@@ -43,9 +43,7 @@ export const getNewBooking = (bookingInfo) => async (dispatch) => {
   return response;
 };
 
-// let bookingInformation;////////////////////////////////////////////////////////////////////////////////////////////////////
 export const removeBooking = (bookingInformation) => async (dispatch) => {
-  console.log("ENTERED FRONTEND REMOVE BOOKING THUNK");
 
   const { id, userId } = bookingInformation;
   console.log(id);
@@ -62,6 +60,31 @@ export const removeBooking = (bookingInformation) => async (dispatch) => {
   const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
   const data2 = await results.json();
   // console.log(data);
+  dispatch(setBooking(data2));
+  return response;
+}
+
+// let bookingInformation;////////////////////////////////////////////////////////////////////////////////////////////////////
+export const updateBooking = (bookingInformation) => async (dispatch) => {
+  console.log("ENTERED FRONTEND UPDATE BOOKING THUNK");
+
+  const { id, userId, newSpotId } = bookingInformation;
+  // console.log("step 2");
+  // console.log(id);
+  // console.log(userId);
+  // console.log(newSpotId);
+  const response = await csrfFetch("http://localhost:3000/api/users/bookings/updateBooking", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      newSpotId
+    })
+  }).catch((error) => console.log("############################", error));
+  console.log("step 3");
+  // const data = await response.json();
+  // console.log(data);
+  const results = await fetch(`http://localhost:3000/api/users/bookings/${userId}`);
+  const data2 = await results.json();
   dispatch(setBooking(data2));
   return response;
 }
